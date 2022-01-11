@@ -1,10 +1,11 @@
 package org.adligo.tests4j4jj;
 
 import org.adligo.i.tests4j.shared.I_LegacyAsserts;
+import org.adligo.i.tests4j.shared.I_ShortAsserts;
 import org.adligo.mockito_ext.DefaultMockitoCtx;
 import org.junit.jupiter.api.Assertions;
 
-public class AbstractJjTrial implements I_LegacyAsserts, DefaultMockitoCtx {
+public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_ShortAsserts {
 
   @Override
   public void assertEquals(Object expected, Object actual) {
@@ -147,4 +148,103 @@ public class AbstractJjTrial implements I_LegacyAsserts, DefaultMockitoCtx {
     Assertions.assertTrue(actual, message);
   }
 
+  @Override
+  public void equals(Object expected, Object actual) {
+    assertEquals(expected, actual);
+  }
+
+  @Override
+  public void equals(String message, Object expected, Object actual) {
+    assertEquals(message, expected, actual);
+  }
+
+  @Override
+  public void equals(String expected, String actual) {
+    assertEquals(expected, actual);
+  }
+
+  @Override
+  public void equals(String message, String expected, String actual) {
+    assertEquals(message, expected, actual);
+  }
+
+  @Override
+  public void isFalse(boolean actual) {
+    assertFalse(actual);
+  }
+
+  @Override
+  public void isFalse(String message, boolean actual) {
+    assertFalse(message, actual);
+  }
+
+  @Override
+  public void isNull(Object actual) {
+    assertNull(actual);
+  }
+
+  @Override
+  public void isNull(String message, Object actual) {
+    assertNull(message, actual);
+  }
+
+  @Override
+  public void isTrue(boolean actual) {
+    assertTrue( actual);
+  }
+
+  @Override
+  public void isTrue(String message, boolean actual) {
+    assertTrue(message, actual);
+  }
+
+  @Override
+  public void notNull(Object actual) {
+    assertNotNull(actual);
+  }
+
+  @Override
+  public void notNull(String message, Object actual) {
+    assertNotNull( message, actual);
+  }
+
+  @Override
+  public void notEquals(Object expected, Object actual) {
+    assertNotEquals( expected, actual);
+  }
+
+  @Override
+  public void notEquals(String message, Object expected, Object actual) {
+    assertNotEquals(message, expected, actual);
+  }
+
+  @Override
+  public void notEquals(String expected, String actual) {
+    assertNotEquals( expected, actual);
+  }
+
+  @Override
+  public void notEquals(String message, String expected, String actual) {
+    assertNotEquals(message,  expected, actual);
+  }
+
+  @Override
+  public void notSame(Object expected, Object actual) {
+    assertNotSame( expected, actual);
+  }
+
+  @Override
+  public void notSame(String message, Object expected, Object actual) {
+    assertNotSame(message,  expected, actual);
+  }
+
+  @Override
+  public void same(Object expected, Object actual) {
+    assertSame( expected, actual);
+  }
+
+  @Override
+  public void same(String message, Object expected, Object actual) {
+    assertSame(message,  expected, actual);
+  }
 }
