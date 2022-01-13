@@ -159,8 +159,7 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
 
   @Override
   public void assertTrue(boolean actual) {
-    throw new IllegalStateException("Method not yet implemented");
-
+    Assertions.assertTrue(actual);
   }
 
   @Override
