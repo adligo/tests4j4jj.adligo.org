@@ -94,12 +94,12 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   
   @Override
   public void assertNotNull(Object actual) {
-    Assertions.assertNull(actual);
+    Assertions.assertNotNull(actual);
   }
 
   @Override
   public void assertNotNull(Object actual, String message) {
-    Assertions.assertNull(actual, message);
+    Assertions.assertNotNull(actual, message);
   }
   
   @Override
