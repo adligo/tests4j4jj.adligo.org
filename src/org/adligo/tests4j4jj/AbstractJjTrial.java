@@ -263,8 +263,9 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   }
 
   @Override
-  public void notSame(Object expected, Object actual) {
+  public Object notSame(Object expected, Object actual) {
     assertNotSame( expected, actual);
+    return actual;
   }
 
   @Override
