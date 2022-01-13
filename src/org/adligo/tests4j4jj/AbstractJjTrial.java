@@ -5,6 +5,41 @@ import org.adligo.i.tests4j.shared.I_ShortAsserts;
 import org.adligo.mockito_ext.DefaultMockitoCtx;
 import org.junit.jupiter.api.Assertions;
 
+/**
+ * This is the root Adaptor for a migration path from JUnit to Tests4j,
+ * in addition it provides pre imported assertion methods, 
+ * and shortened assertion methods.  In addition it standardizes the order
+ * of the assertion parameters to;<br/><br/>
+ * Assertion Message<br/>
+ * Expected Value<br/>
+ * Actual Value<br/>
+ * <br/>
+ * Eventually it may provide SOME of the Tests4j features like assertion counts,
+ * however I doubt it will ever provide dependency graph assertions like Tests4j's
+ * SoucreFileTrials do or isolated assertion of concurrent of code coverage;
+ * {@link <a href="https://github.com/adligo/tests4j.adligo.org">tests4j.adligo.org</a>}
+ * In addition Tests4j MAY have many other interesting and useful features.
+ * 
+ * @author scott
+ *
+ * <pre><code>
+ *         ---------------- Apache ICENSE-2.0 --------------------------
+ *
+ *         Copyright 2022 Adligo Inc
+ * 
+ *         Licensed under the Apache License, Version 2.0 (the "License"); you
+ *         may not use this file except in compliance with the License. You may
+ *         obtain a copy of the License at
+ * 
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *         Unless required by applicable law or agreed to in writing, software
+ *         distributed under the License is distributed on an "AS IS" BASIS,
+ *         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ *         implied. See the License for the specific language governing
+ *         permissions and limitations under the License.
+ *         </code></pre>
+ */
 public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_ShortAsserts {
 
   @Override
