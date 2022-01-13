@@ -173,23 +173,27 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   }
 
   @Override
-  public void equals(Object expected, Object actual) {
+  public Object equals(Object expected, Object actual) {
     assertEquals(expected, actual);
+    return actual;
   }
 
   @Override
-  public void equals(String message, Object expected, Object actual) {
+  public Object equals(String message, Object expected, Object actual) {
     assertEquals(message, expected, actual);
+    return actual;
   }
 
   @Override
-  public void equals(String expected, String actual) {
+  public Object equals(String expected, String actual) {
     assertEquals(expected, actual);
+    return actual;
   }
 
   @Override
-  public void equals(String message, String expected, String actual) {
+  public Object equals(String message, String expected, String actual) {
     assertEquals(message, expected, actual);
+    return actual;
   }
 
   @Override
@@ -223,33 +227,39 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   }
 
   @Override
-  public void notNull(Object actual) {
+  public Object notNull(Object actual) {
     assertNotNull(actual);
+    return actual;
   }
 
   @Override
-  public void notNull(String message, Object actual) {
+  public Object notNull(String message, Object actual) {
     assertNotNull(actual, message);
+    return actual;
   }
 
   @Override
-  public void notEquals(Object expected, Object actual) {
+  public Object notEquals(Object expected, Object actual) {
     assertNotEquals( expected, actual);
+    return actual;
   }
 
   @Override
-  public void notEquals(String message, Object expected, Object actual) {
+  public Object notEquals(String message, Object expected, Object actual) {
     assertNotEquals(message, expected, actual);
+    return actual;
   }
 
   @Override
-  public void notEquals(String expected, String actual) {
+  public Object notEquals(String expected, String actual) {
     assertNotEquals( expected, actual);
+    return actual;
   }
 
   @Override
-  public void notEquals(String message, String expected, String actual) {
+  public Object notEquals(String message, String expected, String actual) {
     assertNotEquals(message,  expected, actual);
+    return actual;
   }
 
   @Override
@@ -258,17 +268,20 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   }
 
   @Override
-  public void notSame(String message, Object expected, Object actual) {
+  public Object notSame(String message, Object expected, Object actual) {
     assertNotSame(message,  expected, actual);
+    return actual;
   }
 
   @Override
-  public void same(Object expected, Object actual) {
+  public Object same(Object expected, Object actual) {
     assertSame( expected, actual);
+    return actual;
   }
 
   @Override
-  public void same(String message, Object expected, Object actual) {
+  public Object same(String message, Object expected, Object actual) {
     assertSame(message,  expected, actual);
+    return actual;
   }
 }
