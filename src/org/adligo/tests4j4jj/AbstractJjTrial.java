@@ -64,7 +64,7 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
 
   @Override
   public void assertEquals(String message, String expected, String actual) {
-    Assertions.assertEquals(message, expected, actual);
+    Assertions.assertEquals(expected, actual, message);
   }
 
   @Override
@@ -88,11 +88,6 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   }
 
   @Override
-  public void assertNull(String message, Object actual) {
-    Assertions.assertNull(actual, message);
-  }
-
-  @Override
   public void assertNull(Object actual, String message) {
     Assertions.assertNull(actual, message);
   }
@@ -100,11 +95,6 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   @Override
   public void assertNotNull(Object actual) {
     Assertions.assertNull(actual);
-  }
-
-  @Override
-  public void assertNotNull(String message, Object actual) {
-    Assertions.assertNull(actual, message);
   }
 
   @Override
@@ -220,7 +210,7 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
 
   @Override
   public void isNull(String message, Object actual) {
-    assertNull(message, actual);
+    assertNull(actual, message);
   }
 
   @Override
@@ -240,7 +230,7 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
 
   @Override
   public void notNull(String message, Object actual) {
-    assertNotNull( message, actual);
+    assertNotNull(actual, message);
   }
 
   @Override
