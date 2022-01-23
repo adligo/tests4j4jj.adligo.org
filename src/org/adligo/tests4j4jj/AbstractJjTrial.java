@@ -1,7 +1,10 @@
 package org.adligo.tests4j4jj;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
+import org.adligo.i.tests4j.shared.I_CollectionAsserts;
 import org.adligo.i.tests4j.shared.I_LegacyAsserts;
 import org.adligo.i.tests4j.shared.I_ShortAsserts;
 import org.adligo.mockito_ext.MockitoMixin;
@@ -42,7 +45,8 @@ import org.junit.jupiter.api.Assertions;
  *         permissions and limitations under the License.
  *         </code></pre>
  */
-public class AbstractJjTrial implements MockitoMixin, I_LegacyAsserts, I_ShortAsserts {
+public class AbstractJjTrial implements MockitoMixin, 
+I_CollectionAsserts, I_LegacyAsserts, I_ShortAsserts {
 
   @Override
   public void assertEquals(Object expected, Object actual) {
@@ -172,6 +176,43 @@ public class AbstractJjTrial implements MockitoMixin, I_LegacyAsserts, I_ShortAs
   @Override
   public void assertTrue(boolean actual, String message) {
     Assertions.assertTrue(actual, message);
+  }
+
+
+  @Override
+  public <O> O contains(Collection<O> collection, O actual) {
+    isTrue(collection.contains(actual));
+    return actual;
+  }
+
+  @Override
+  public <O> O contains(String message, Collection<O> collection, O actual) {
+    isTrue(message, collection.contains(actual));
+    return actual;
+  }
+
+  @Override
+  public <O, V> O containsKey(Map<O, V> map, O actual) {
+    isTrue(map.containsKey(actual));
+    return actual;
+  }
+
+  @Override
+  public <O, V> O containsKey(String message, Map<O, V> map, O actual) {
+    isTrue(message, map.containsKey(actual));
+    return actual;
+  }
+
+  @Override
+  public <K, O> O containsValue(Map<K, O> map, O actual) {
+    isTrue(map.containsValue(actual));
+    return actual;
+  }
+
+  @Override
+  public <K, O> O containsValue(String message, Map<K, O> map, O actual) {
+    isTrue(message, map.containsValue(actual));
+    return actual;
   }
 
   @Override
@@ -342,5 +383,41 @@ public class AbstractJjTrial implements MockitoMixin, I_LegacyAsserts, I_ShortAs
         caught = caught.getCause();
       }
     }
+  }
+
+  @Override
+  public <O> O notContains(Collection<O> collection, O actual) {
+    isFalse(collection.contains(actual));
+    return actual;
+  }
+
+  @Override
+  public <O> O notContains(String message, Collection<O> collection, O actual) {
+    isFalse(message, collection.contains(actual));
+    return actual;
+  }
+
+  @Override
+  public <O, V> O notContainsKey(Map<O, V> map, O actual) {
+    isFalse(map.containsKey(actual));
+    return actual;
+  }
+
+  @Override
+  public <O, V> O notContainsKey(String message, Map<O, V> map, O actual) {
+    isFalse(message, map.containsKey(actual));
+    return actual;
+  }
+
+  @Override
+  public <K, O> O notContainsValue(Map<K, O> map, O actual) {
+    isFalse(map.containsValue(actual));
+    return actual;
+  }
+
+  @Override
+  public <K, O> O notContainsValue(String message, Map<K, O> map, O actual) {
+    isFalse(message, map.containsValue(actual));
+    return actual;
   }
 }
