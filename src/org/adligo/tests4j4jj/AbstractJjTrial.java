@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.adligo.i.tests4j.shared.I_LegacyAsserts;
 import org.adligo.i.tests4j.shared.I_ShortAsserts;
-import org.adligo.mockito_ext.DefaultMockitoCtx;
+import org.adligo.mockito_ext.MockitoMixin;
 import org.junit.jupiter.api.Assertions;
 
 /**
@@ -42,7 +42,7 @@ import org.junit.jupiter.api.Assertions;
  *         permissions and limitations under the License.
  *         </code></pre>
  */
-public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_ShortAsserts {
+public class AbstractJjTrial implements MockitoMixin, I_LegacyAsserts, I_ShortAsserts {
 
   @Override
   public void assertEquals(Object expected, Object actual) {
