@@ -1,5 +1,7 @@
 package org.adligo.tests4j4jj;
 
+import java.util.List;
+
 import org.adligo.i.tests4j.shared.I_LegacyAsserts;
 import org.adligo.i.tests4j.shared.I_ShortAsserts;
 import org.adligo.mockito_ext.DefaultMockitoCtx;
@@ -173,25 +175,25 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   }
 
   @Override
-  public Object equals(Object expected, Object actual) {
+  public <O> O equals(Object expected, O actual) {
     assertEquals(expected, actual);
     return actual;
   }
 
   @Override
-  public Object equals(String message, Object expected, Object actual) {
+  public <O> O equals(String message, Object expected, O actual) {
     assertEquals(message, expected, actual);
     return actual;
   }
 
   @Override
-  public Object equals(String expected, String actual) {
+  public String equals(String expected, String actual) {
     assertEquals(expected, actual);
     return actual;
   }
 
   @Override
-  public Object equals(String message, String expected, String actual) {
+  public String equals(String message, String expected, String actual) {
     assertEquals(message, expected, actual);
     return actual;
   }
@@ -227,62 +229,118 @@ public class AbstractJjTrial implements DefaultMockitoCtx, I_LegacyAsserts, I_Sh
   }
 
   @Override
-  public Object notNull(Object actual) {
+  public <O> O notNull(O actual) {
     assertNotNull(actual);
     return actual;
   }
 
   @Override
-  public Object notNull(String message, Object actual) {
+  public <O> O notNull(String message, O actual) {
     assertNotNull(actual, message);
     return actual;
   }
 
   @Override
-  public Object notEquals(Object expected, Object actual) {
+  public <O> O notEquals(Object expected, O actual) {
     assertNotEquals( expected, actual);
     return actual;
   }
 
   @Override
-  public Object notEquals(String message, Object expected, Object actual) {
+  public <O> O notEquals(String message, Object expected, O actual) {
     assertNotEquals(message, expected, actual);
     return actual;
   }
 
   @Override
-  public Object notEquals(String expected, String actual) {
+  public String notEquals(String expected, String actual) {
     assertNotEquals( expected, actual);
     return actual;
   }
 
   @Override
-  public Object notEquals(String message, String expected, String actual) {
+  public String notEquals(String message, String expected, String actual) {
     assertNotEquals(message,  expected, actual);
     return actual;
   }
 
   @Override
-  public Object notSame(Object expected, Object actual) {
+  public <O> O  notSame(Object expected, O actual) {
     assertNotSame( expected, actual);
     return actual;
   }
 
   @Override
-  public Object notSame(String message, Object expected, Object actual) {
+  public <O> O  notSame(String message, Object expected, O actual) {
     assertNotSame(message,  expected, actual);
     return actual;
   }
 
   @Override
-  public Object same(Object expected, Object actual) {
+  public <O> O  same(Object expected, O actual) {
     assertSame( expected, actual);
     return actual;
   }
 
   @Override
-  public Object same(String message, Object expected, Object actual) {
+  public <O> O same(String message, Object expected, O actual) {
     assertSame(message,  expected, actual);
     return actual;
+  }
+
+  @Override
+  public void thrown(List<Throwable> expected, Runnable runnable) {
+    thrown(true, expected, runnable);
+  }
+
+  @Override
+  public void thrown(String message, List<Throwable> expected, Runnable runnable) {
+    thrown(true, message, expected, runnable);
+  }
+  
+  /**
+   * @param check added only to get code coverage to 100%
+   * @param expected
+   * @param runnable
+   */
+  protected void thrown(boolean check, List<Throwable> expected, Runnable runnable) {
+    Throwable caught = null;
+    try {
+      runnable.run();
+    } catch (Throwable t) {
+      caught = t;
+    }
+    if (check) {
+      notNull(caught);
+      for (Throwable t : expected) {
+        same(t.getClass(), caught.getClass());
+        equals(t.getMessage(), caught.getMessage());
+        caught = caught.getCause();
+      }
+    }
+  }
+
+  /**
+   * 
+   * @param check added only to get code coverage to 100%
+   * @param message
+   * @param expected
+   * @param runnable
+   */
+  protected void thrown(boolean check, String message, List<Throwable> expected, Runnable runnable) {
+    Throwable caught = null;
+    try {
+      runnable.run();
+    } catch (Throwable t) {
+      caught = t;
+    }
+    if (check) {
+      notNull(message, caught);
+      for (Throwable t : expected) {
+        same(message, t.getClass(), caught.getClass());
+        equals(message, t.getMessage(), caught.getMessage());
+        caught = caught.getCause();
+      }
+    }
   }
 }
