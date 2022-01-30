@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import org.adligo.i.tests4j.shared.I_CollectionAsserts;
-import org.adligo.i.tests4j.shared.I_LegacyAsserts;
-import org.adligo.i.tests4j.shared.I_ShortAsserts;
+import org.adligo.i_tests4j.shared.I_CollectionAsserts;
+import org.adligo.i_tests4j.shared.I_LegacyAsserts;
+import org.adligo.i_tests4j.shared.I_ShortAsserts;
 import org.adligo.mockito_ext.MockitoMixin;
 import org.junit.jupiter.api.Assertions;
 
