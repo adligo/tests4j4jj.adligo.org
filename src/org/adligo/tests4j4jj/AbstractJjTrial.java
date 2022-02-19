@@ -1,5 +1,6 @@
 package org.adligo.tests4j4jj;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -336,7 +337,10 @@ I_CollectionAsserts, I_LegacyAsserts, I_ShortAsserts {
 
   @Override
   public void thrown(Throwable expected, Runnable runnable) {
-    thrown(true, List.of(expected), runnable);
+    //jdk 1.7 compatibility
+    List<Throwable> l = new ArrayList<>();
+    l.add(expected);
+    thrown(true, l, runnable);
   }
   
   @Override
@@ -346,7 +350,10 @@ I_CollectionAsserts, I_LegacyAsserts, I_ShortAsserts {
 
   @Override
   public void thrown(String message, Throwable expected, Runnable runnable) {
-    thrown(true, message, List.of(expected), runnable);
+    //jdk 1.7 compatibility
+    List<Throwable> l = new ArrayList<>();
+    l.add(expected);
+    thrown(true, message, l, runnable);
   }
  
   /**
