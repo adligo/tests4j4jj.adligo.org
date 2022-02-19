@@ -335,10 +335,20 @@ I_CollectionAsserts, I_LegacyAsserts, I_ShortAsserts {
   }
 
   @Override
+  public void thrown(Throwable expected, Runnable runnable) {
+    thrown(true, List.of(expected), runnable);
+  }
+  
+  @Override
   public void thrown(String message, List<Throwable> expected, Runnable runnable) {
     thrown(true, message, expected, runnable);
   }
-  
+
+  @Override
+  public void thrown(String message, Throwable expected, Runnable runnable) {
+    thrown(true, message, List.of(expected), runnable);
+  }
+ 
   /**
    * @param check added only to get code coverage to 100%
    * @param expected
