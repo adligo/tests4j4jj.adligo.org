@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.adligo.i_tests4j.shared.I_CollectionAsserts;
 import org.adligo.i_tests4j.shared.I_LegacyAsserts;
@@ -216,6 +217,18 @@ I_CollectionAsserts, I_LegacyAsserts, I_ShortAsserts {
     return actual;
   }
 
+  @Override
+  public <O> Optional<O> empty(Optional<O> o) {
+    assertSame(Optional.empty(), o);
+    return o;
+  }
+
+  @Override
+  public <O> Optional<O> empty(String message, Optional<O> o) {
+    assertSame(message, Optional.empty(), o);
+    return o;
+  }
+  
   @Override
   public <O> O equals(Object expected, O actual) {
     assertEquals(expected, actual);
